@@ -14,7 +14,17 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        vibrantPink: '#FF009E',
+        turquoise: '#00BFA6',
+        cornYellow: '#FFD700',
+        deepGreen: '#228B22',
+        brightOrange: '#FF5733',
+        deepPurple: '#8B008B',
+        boneWhite: '#FFF8DC',
+      },
+    },
   },
   darkMode: "class",
   plugins: [nextui()],
