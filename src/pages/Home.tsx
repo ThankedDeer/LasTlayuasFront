@@ -1,8 +1,13 @@
+import About from "../components/About/About"
+import Testimonial from "../components/Testimonials/Testimonial"
 
 const Home = () => {
     return (
-        <main className="h-screen bg-black">
+        <main className="container mx-auto px-16">
+            <About />
+            <Testimonial />
         </main>
+
     )
 }
 

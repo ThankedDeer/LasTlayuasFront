@@ -16,16 +16,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        vibrantPink: '#FF009E',
-        turquoise: '#00BFA6',
-        cornYellow: '#FFD700',
-        deepGreen: '#228B22',
-        brightOrange: '#FF5733',
-        deepPurple: '#8B008B',
-        boneWhite: '#FFF8DC',
+        vibrantPink: "#FF009E",
+        turquoise: "#00BFA6",
+        cornYellow: "#FFD700",
+        deepGreen: "#228B22",
+        brightOrange: "#FF5733",
+        deepPurple: "#8B008B",
+        boneWhite: "#FFF8DC",
+        Lowgary: "#939393",
+      },
+      fontFamily: {
+        Roboto: ["Roboto", "sans-serif"],
+        RobotoSerif: ["Roboto Serif", "serif"],
+        FugazOne: ["Fugaz One", "sans-serif"],
+        Ruthie: ["Ruthie", "cursive"],
+      },
+      spacing: {
+        500: "590px",
       },
     },
   },
+
   darkMode: "class",
   plugins: [nextui()],
 };

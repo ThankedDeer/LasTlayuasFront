@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import NotFound from "../pages/NotFound";
 import PublicLayout from "../Layouts/PublicLayout";
 import Home from "../pages/Home";
+import UserList from "../components/UserList/UserList";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +15,12 @@ export const router = createBrowserRouter([
                 element: <Home />,
             }
         ]
+
+    },
+    {
+        path: "users",
+        element: <UserList />,
+        errorElement: <NotFound />,
 
     },
 ]);

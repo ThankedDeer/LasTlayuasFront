@@ -2,6 +2,7 @@ import { Chip, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, 
 import React, { Key } from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import useAllUsers from "../../hooks/useUserList";
 
 const columns = [
     { name: "Name", uid: "name" },
@@ -30,11 +31,15 @@ export interface AppUser {
 //     vacation: "warning",
 // };
 
-interface UserListProps {
-    users: AppUser[] | null;
-}
+// interface UserListProps {
+//     users: AppUser[] | null;
+// }
 
-export default function UserList({ users }: UserListProps) {
+export default function UserList() {
+
+    const { allUsers} = useAllUsers()
+
+
     const renderCell = React.useCallback((user: AppUser, columnKey: Key) => {
         const cellValue = user[columnKey as keyof AppUser];
 
@@ -44,7 +49,7 @@ export default function UserList({ users }: UserListProps) {
                     <NextUser
                         avatarProps={{ radius: "lg", src: `https://api.dicebear.com/9.x/pixel-art/svg?seed=${user.firstname}` }}
                         description={user.email}
-                        name={`${user.firstname} ${user.lastname}`}
+                        name={`${user.firstname} ${user.lastname}`} 
                     >
                         {user.email}
                     </NextUser>
@@ -88,7 +93,7 @@ export default function UserList({ users }: UserListProps) {
 
     return (
         <>
-            {users && users.length > 0 ? (
+            {allUsers && allUsers.length > 0 ? (
                 <Table aria-label="Example table with custom cells">
                     <TableHeader columns={columns}>
                         {(column) => (
@@ -97,7 +102,7 @@ export default function UserList({ users }: UserListProps) {
                             </TableColumn>
                         )}
                     </TableHeader>
-                    <TableBody items={users}>
+                    <TableBody items={allUsers}>
                         {(item) => (
                             <TableRow key={item.user_id}>
                                 {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
