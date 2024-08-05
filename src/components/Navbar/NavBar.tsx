@@ -57,10 +57,10 @@ export default function NavBar() {
                 </NavbarBrand>
             </NavbarContent>
 
-            <NavbarContent className="hidden sm:flex gap-10" justify="start">
+            <NavbarContent className="hidden sm:flex gap-10" justify="center">
                 {menuItems.map((item, index) => (
                     <NavbarItem key={`${item.label}-${index}`}>
-                        <Link className="text-white text-xl" href={item.link}>
+                        <Link className="text-white text-2xl text-center" href={item.link}>
                             {item.label}
                         </Link>
                     </NavbarItem>

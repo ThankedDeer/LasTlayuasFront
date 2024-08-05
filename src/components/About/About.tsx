@@ -17,18 +17,15 @@ const About = () => {
                 </p>
             </div>
             <div className="grid place-items-center">
-
                 <Image
                     width={400}
-                    height={600}
                     alt="NextUI hero Image"
-                    src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+                    src="/public/img/history2.jpeg"
                 />
                 <Image
                     width={400}
-                    height={600}
                     alt="NextUI hero Image"
-                    src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
+                    src="/public/img/rio.JPG"
                 />
             </div>
 

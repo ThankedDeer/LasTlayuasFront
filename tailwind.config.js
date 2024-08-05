@@ -24,6 +24,10 @@ module.exports = {
         deepPurple: "#8B008B",
         boneWhite: "#FFF8DC",
         Lowgary: "#939393",
+        primary: {
+          DEFAULT: "#FF009E",
+          foreground: "#FFFFFF",
+        },
       },
       fontFamily: {
         Roboto: ["Roboto", "sans-serif"],

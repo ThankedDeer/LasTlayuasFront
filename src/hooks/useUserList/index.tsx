@@ -46,8 +46,8 @@ const useAllUsers = () => {
                 const response = await instance.get("users/");
                 const users = addRole(response.data)
                 setAllUsers(users);
-            } catch (error) {
-                setErrorUsers(error.message || "An error occurred");
+            } catch (error: any) {
+                setErrorUsers(error.message as string || "An error occurred");
                 console.error("Error fetching users:", error);
             } finally {
                 setLoadingUsers(false);
