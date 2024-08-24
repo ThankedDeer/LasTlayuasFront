@@ -1,17 +1,20 @@
 import { Button, Checkbox, Input, Link, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
-import React from "react";
+import React, { useContext } from "react";
 import { FaEyeSlash } from "react-icons/fa";
 import { TbEyeFilled } from "react-icons/tb";
 import useLogin from "../../hooks/useLogin/UseLogin";
 import LoadingOverlay from "../Loader/Loader";
+import { LoginContext } from "../../context/LoginContext";
 
 
 export default function Login() {
     const [isVisible, setIsVisible] = React.useState(false);
 
     const toggleVisibility = () => setIsVisible(!isVisible);
+    const { setLogin } = useContext(LoginContext)
 
-    const { formikLogin, loading } = useLogin()
+
+    const { formikLogin, loading } = useLogin(setLogin)
     return (
         <>
 
@@ -107,7 +110,7 @@ export default function Login() {
                                 </ModalBody>
                                 <ModalFooter className="flex flex-col items-start">
 
-                                    <h3 className="block w-full  mt-4 text-sm font-bold text-Lowgary">
+                                    <h3 className="block w-full   text-sm font-bold text-Lowgary">
                                         ¿No tienes cuenta?
                                         <Link className="ml-2" href="/register" size="sm">
                                             Regístrate

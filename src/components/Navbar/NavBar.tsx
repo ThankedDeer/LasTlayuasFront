@@ -1,47 +1,41 @@
 import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebookSquare, FaPhoneAlt } from "react-icons/fa";
+import { LoginContext } from "../../context/LoginContext";
 
-export default function NavBar() {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-    interface menuItem {
-        label: string,
-        link: string
+interface menuItem {
+    label: string,
+    link: string
+}
+const menuItems: menuItem[] = [
+    {
+        label: "Menu",
+        link: "/menu"
+    },
+    {
+        label: "Productos",
+        link: "/menu"
+    },
+    {
+        label: "Reserva",
+        link: "/menu"
+    },
+    {
+        label: "Nosotros",
+        link: "/menu"
     }
+]
+export default function NavBar() {
 
 
-    const isLoged = true
-    // "Profile",
-    // "Dashboard",
-    // "Activity",
-    // "Analytics",
-    // "System",
-    // "Deployments",
-    // "My Settings",
-    // "Team Settings",
-    // "Help & Feedback",
-    // "Log Out",
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const { isLogin } = useContext(LoginContext)
 
-    const menuItems: menuItem[] = [
-        {
-            label: "Menu",
-            link: "/menu"
-        },
-        {
-            label: "Productos",
-            link: "/menu"
-        },
-        {
-            label: "Reserva",
-            link: "/menu"
-        },
-        {
-            label: "Nosotros",
-            link: "/menu"
-        }
-    ]
+    useEffect(() => {
+        console.log(isLogin);
+
+    }, [isLogin])
 
     const SiszeIcon = 21
 
@@ -78,12 +72,12 @@ export default function NavBar() {
                 </NavbarItem>
             </NavbarContent>
 
-            {isLoged ? <NavbarContent justify="end">
+            {!isLogin ? <NavbarContent justify="end">
                 <NavbarItem className="hidden lg:flex">
-                    <Link href="#">Login</Link>
+                    <Link href="login">Login</Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Button as={Link} color="primary" href="#" variant="flat">
+                    <Button as={Link} color="primary" href="register" variant="flat">
                         Sign Up
                     </Button>
                 </NavbarItem>

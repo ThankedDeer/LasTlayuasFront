@@ -1,8 +1,10 @@
 import { Chip, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Tooltip, User as NextUser } from "@nextui-org/react";
-import React, { Key } from "react";
+import React, { Key, useState } from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import useAllUsers from "../../hooks/useUserList";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import EditUserModal from "../EditUserModal/EditUserModal";
 
 const columns = [
     { name: "Name", uid: "name" },
@@ -17,31 +19,29 @@ export interface AppUser {
     lastname: string;
     password: string;
     email: string;
-    password_changed_at: string;
-    created_at: string;
-    avatar?: string;
-    team?: string;
-    status?: string;
-    role?: string;
+    role_id: number;
+    role_name: string;
+    role_description: RoleDescription;
 }
 
-// const statusColorMap = {
-//     active: "success",
-//     paused: "danger",
-//     vacation: "warning",
-// };
-
-// interface UserListProps {
-//     users: AppUser[] | null;
-// }
+export interface RoleDescription {
+    String: string;
+    Valid: boolean;
+}
 
 export default function UserList() {
+    const { allUsers } = useAllUsers();
+    const [selectedUser, setSelectedUser] = useState<AppUser | null>(null);
+    const [modalType, setModalType] = useState<'view' | 'edit' | null>(null);
+    const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
-    const { allUsers} = useAllUsers()
-
+    const openModal = (user: AppUser, type: 'view' | 'edit') => {
+        setSelectedUser(user);
+        setModalType(type);
+        onOpen();
+    };
 
     const renderCell = React.useCallback((user: AppUser, columnKey: Key) => {
-        const cellValue = user[columnKey as keyof AppUser];
 
         switch (columnKey) {
             case "name":
@@ -49,7 +49,7 @@ export default function UserList() {
                     <NextUser
                         avatarProps={{ radius: "lg", src: `https://api.dicebear.com/9.x/pixel-art/svg?seed=${user.firstname}` }}
                         description={user.email}
-                        name={`${user.firstname} ${user.lastname}`} 
+                        name={`${user.firstname} ${user.lastname}`}
                     >
                         {user.email}
                     </NextUser>
@@ -57,7 +57,7 @@ export default function UserList() {
             case "role":
                 return (
                     <div className="flex flex-col">
-                        <p className="text-bold text-sm capitalize">{cellValue}</p>
+                        <p className="text-bold text-sm capitalize">{user.role_name}</p>
                     </div>
                 );
             case "status":
@@ -70,12 +70,12 @@ export default function UserList() {
                 return (
                     <div className="relative flex items-end gap-2">
                         <Tooltip content="Details">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => openModal(user, 'view')}>
                                 <FaEye />
                             </span>
                         </Tooltip>
                         <Tooltip content="Edit user">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50" onClick={() => openModal(user, 'edit')}>
                                 <FaEdit />
                             </span>
                         </Tooltip>
@@ -87,7 +87,7 @@ export default function UserList() {
                     </div>
                 );
             default:
-                return <span>{cellValue}</span>;
+                return <span>{"hola"}</span>;
         }
     }, []);
 
@@ -113,6 +113,33 @@ export default function UserList() {
             ) : (
                 <p>No users found</p>
             )}
+
+            {/* Modal for Viewing User Details */}
+            <Modal isOpen={isOpen && modalType === 'view'} onOpenChange={onClose}>
+                <ModalContent>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader className="flex flex-col gap-1">User Details</ModalHeader>
+                            <ModalBody>
+                                {selectedUser && (
+                                    <div>
+                                        <p><strong>Name:</strong> {selectedUser.firstname} {selectedUser.lastname}</p>
+                                        <p><strong>Email:</strong> {selectedUser.email}</p>
+                                        <p><strong>Role:</strong> {selectedUser.role_name}</p>
+                                        <p><strong>Description:</strong> {selectedUser.role_description.String}</p>
+                                    </div>
+                                )}
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="danger" variant="light" onPress={onClose}>Close</Button>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
+
+            {/* Modal for Editing User */}
+            <EditUserModal user={selectedUser} isOpen={isOpen && modalType === 'edit'} onOpen={onOpen} onOpenChange={onOpenChange} />
         </>
     );
 }

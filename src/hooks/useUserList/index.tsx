@@ -7,28 +7,29 @@ export interface AppUser {
     lastname: string;
     password: string;
     email: string;
-    password_changed_at: string;
-    created_at: string;
-    avatar?: string;
-    team?: string;
-    status?: string;
-    role?: string;
+    role_id: number;
+    role_name: string;
+    role_description: RoleDescription;
 
 }
-
-const addRole = (users: AppUser[] | null): AppUser[] | null => {
-    if (users && users.length > 0) {
-        const usersWithRoles: AppUser[] = users.map((user) => {
-            const randomIndex = Math.floor(Math.random() * 2);
-            return {
-                ...user,
-                role: randomIndex === 0 ? "UserWeb" : "Admin",
-            };
-        });
-        return usersWithRoles;
-    }
-    return null;
+export interface RoleDescription {
+    String: string;
+    Valid: boolean;
 }
+
+// const addRole = (users: AppUser[] | null): AppUser[] | null => {
+//     if (users && users.length > 0) {
+//         const usersWithRoles: AppUser[] = users.map((user) => {
+//             const randomIndex = Math.floor(Math.random() * 2);
+//             return {
+//                 ...user,
+//                 role: randomIndex === 0 ? "UserWeb" : "Admin",
+//             };
+//         });
+//         return usersWithRoles;
+//     }
+//     return null;
+// }
 
 
 
@@ -44,7 +45,7 @@ const useAllUsers = () => {
 
             try {
                 const response = await instance.get("users/");
-                const users = addRole(response.data)
+                const users = response.data
                 setAllUsers(users);
             } catch (error: any) {
                 setErrorUsers(error.message as string || "An error occurred");

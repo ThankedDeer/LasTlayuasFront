@@ -117,7 +117,7 @@ export default function Register() {
                                     </form>
                                 </ModalBody>
                                 <ModalFooter className="flex flex-col items-start">
-                                    <h3 className="block w-full mt-4 text-sm font-bold text-Lowgary">
+                                    <h3 className="block w-full  text-sm font-bold text-Lowgary">
                                         ¿Ya tienes cuenta?
                                         <Link className="ml-2" href="/login" size="sm">
                                             Inicia sesión.

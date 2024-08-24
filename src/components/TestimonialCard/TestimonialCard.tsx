@@ -1,10 +1,7 @@
+import { ITestimonial } from "../../hooks/useTestimonis/useGetTestimonial";
 import Quotation from "../Quotation/Quotation";
 
-export interface ITestimonial {
-    img: string;
-    name: string;
-    opinion: string;
-}
+
 
 interface ITestimonialCardProps {
     testimonial: ITestimonial;
@@ -21,17 +18,17 @@ const TestimonialCard = ({ testimonial, color }: ITestimonialCardProps) => {
                 <Quotation color={color} />
             </div>
             <p className="font-Roboto text-Lowgary text-center h-3/5 px-8 py-14 text-sm">
-                {testimonial.opinion}
+                {testimonial.testimonial}
             </p>
             <div className="relative flex flex-col items-center h-2/5" style={{ backgroundColor: color }}>
                 <div className="absolute top-0 transform -translate-y-1/2 p-1 rounded-full" style={{ backgroundColor: color }}>
                     <img
-                        src={testimonial.img}
-                        alt={testimonial.name}
+                        src={`https://api.dicebear.com/9.x/pixel-art/svg?seed=${testimonial.title}`}
+                        alt={testimonial.testimonial}
                         className="h-24 w-24 block rounded-full object-cover object-center"
                     />
                 </div>
-                <h3 className="font-semibold text-lg text-white mt-14">{testimonial.name}</h3>
+                <h3 className="font-semibold text-lg text-white mt-14">{testimonial.title}</h3>
             </div>
         </div>
 

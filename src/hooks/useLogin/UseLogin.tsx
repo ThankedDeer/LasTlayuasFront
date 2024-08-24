@@ -30,7 +30,7 @@ const validate = (values: ILogin) => {
     return errors;
 };
 
-const useLogin = () => {
+const useLogin = (setLoginContext: (state: boolean) => void) => {
     const [login, setLogin] = useState<ILogin | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>("");
@@ -53,12 +53,14 @@ const useLogin = () => {
         instance.post("users/", userData)
             .then((response) => {
                 setLogin(response.data);
-                resetForm(); // Limpiar el formulario
-                navigate("/"); // Redirigir a la página de éxito o a donde desees
+                resetForm();
+                navigate("/");
+                setLoginContext(true)
             })
             .catch((error) => {
                 setError(error.message || "An error occurred"); 7
-                navigate("/"); // Redirigir a la página de éxito o a donde desees
+                navigate("/");
+                setLoginContext(true)
 
             })
             .finally(() => {
