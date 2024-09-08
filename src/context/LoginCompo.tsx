@@ -3,13 +3,10 @@ import { LoginContext } from "./LoginContext";
 
 const LoginCompo = ({ children }: { children: ReactNode }) => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
-
-  const updateLoginState = (state: boolean) => {
-    setIsLogin(state);
-  };
+  const [token, setToken] = useState<string | null>(null);
 
   return (
-    <LoginContext.Provider value={{ isLogin, setLogin: updateLoginState }}>
+    <LoginContext.Provider value={{ isLogin, setLogin: setIsLogin, setToken: setToken, token: token }}>
       {children}
     </LoginContext.Provider>
   );

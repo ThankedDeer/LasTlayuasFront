@@ -119,7 +119,7 @@ export default function Login() {
                                 </ModalFooter>
 
                             </div>
-                            <div className="col-span-3"><img src="/public/img/Las Tlayudas.png" alt="Las tlayudas" className="h-full w-full" /></div>
+                            <div className="col-span-3"><img src="/img/Las Tlayudas.png" alt="Las tlayudas" className="h-full w-full" /></div>
                         </>
                     )}
                 </ModalContent>

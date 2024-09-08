@@ -28,6 +28,10 @@ module.exports = {
           DEFAULT: "#FF009E",
           foreground: "#FFFFFF",
         },
+        secondary: {
+          DEFAULT: "#8B008B",
+          foreground: "#FFFFFF",
+        },
       },
       fontFamily: {
         Roboto: ["Roboto", "sans-serif"],

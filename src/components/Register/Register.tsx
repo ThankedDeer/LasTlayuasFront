@@ -126,7 +126,7 @@ export default function Register() {
                                 </ModalFooter>
                             </div>
                             <div className="col-span-3">
-                                <img src="/public/img/Las Tlayudas.png" alt="Las tlayudas" className="h-full w-full" />
+                                <img src="/img/Las Tlayudas.png" alt="Las tlayudas" className="h-full w-full" />
                             </div>
                         </>
                     )}

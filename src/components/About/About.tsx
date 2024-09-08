@@ -18,12 +18,12 @@ const About = () => {
                 <Image
                     width={400}
                     alt="NextUI hero Image"
-                    src="/public/img/history2.jpeg"
+                    src="/img/history2.jpeg"
                 />
                 <Image
                     width={400}
                     alt="NextUI hero Image"
-                    src="/public/img/rio.JPG"
+                    src="/img/rio.JPG"
                 />
             </div>
 

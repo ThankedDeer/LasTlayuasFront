@@ -9,7 +9,7 @@ const PublicLayout = () => {
 
     return (
         <>
-            <div className=" flex flex-col h-screen header text-white bg-center bg-cover bg-blend-overlay bg-fixed bg-black/75 div">
+            <div className=" flex flex-col h-screen header text-white bg-center bg-cover bg-blend-overlay bg-fixed bg-black/80 div">
                 <NavBar />
                 <Hero />
             </div>
