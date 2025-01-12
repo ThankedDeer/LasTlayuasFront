@@ -6,7 +6,14 @@ const LoginCompo = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
 
   return (
-    <LoginContext.Provider value={{ isLogin, setLogin: setIsLogin, setToken: setToken, token: token }}>
+    <LoginContext.Provider
+      value={{
+        isLogin,
+        setLogin: setIsLogin,
+        setToken: setToken,
+        token: token,
+      }}
+    >
       {children}
     </LoginContext.Provider>
   );

@@ -24,12 +24,12 @@ export default function App() {
       { label: "Reserva", link: "/reserva" },
       { label: "Nosotros", link: "/nosotros" },
     ],
-    []
+    [],
   );
 
   const middleIndex = useMemo(
     () => Math.ceil(menuItems.length / 2),
-    [menuItems.length]
+    [menuItems.length],
   );
 
   return (

@@ -9,7 +9,9 @@ header {
   padding: 8px 12px;
   color: #ffffff; /* Color más tenue */
   text-decoration: none;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Suavidad en cambios */
+  transition:
+    color 0.3s ease-in-out,
+    transform 0.3s ease-in-out; /* Suavidad en cambios */
 }
 
 /* Hover para enlaces no activos */
@@ -29,7 +31,9 @@ header {
   background-color: transparent; /* Oculto inicialmente */
   border-radius: 2px; /* Esquinas redondeadas */
   transform: translateX(-50%) scaleX(0); /* Oculto al inicio */
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
 
 /* Hover para la línea decorativa en enlaces no activos */
@@ -65,5 +69,7 @@ header {
   background-color: #ff009e; /* Color destacado */
   border-radius: 2px;
   transform: translateX(-50%) scaleX(1); /* Línea completamente visible */
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
