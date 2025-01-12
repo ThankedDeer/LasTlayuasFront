@@ -1,0 +1,69 @@
+header {
+  justify-content: center !important;
+}
+/* Estilo base para enlaces no activos */
+.navbar-Inactive {
+  position: relative;
+  font-weight: normal; /* Menos prominente */
+  font-size: 16px;
+  padding: 8px 12px;
+  color: #ffffff; /* Color más tenue */
+  text-decoration: none;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Suavidad en cambios */
+}
+
+/* Hover para enlaces no activos */
+.navbar-Inactive:hover {
+  color: #ff009e; /* Color destacado en hover */
+  transform: translateY(-2px); /* Movimiento sutil hacia arriba */
+}
+
+/* Línea decorativa para enlaces no activos */
+.navbar-Inactive::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px; /* Espaciado ajustado */
+  width: 100%; /* Línea igual que el texto */
+  height: 2px; /* Grosor de la línea */
+  background-color: transparent; /* Oculto inicialmente */
+  border-radius: 2px; /* Esquinas redondeadas */
+  transform: translateX(-50%) scaleX(0); /* Oculto al inicio */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Hover para la línea decorativa en enlaces no activos */
+.navbar-Inactive:hover::after {
+  transform: translateX(-50%) scaleX(0.5); /* Línea parcial al hover */
+  background-color: #ff009e; /* Color más suave en hover */
+}
+
+/* Estilo para enlaces activos */
+.navbar-active {
+  position: relative;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+  color: #ff009e; /* Color destacado inicial */
+  text-decoration: none;
+  transition: color 0.3s ease-in-out; /* Transición uniforme */
+}
+
+/* Hover para enlaces activos */
+.navbar-active:hover {
+  color: #bb0876; /* Tonalidad más profunda en hover */
+}
+
+/* Línea decorativa para enlaces activos */
+.navbar-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #ff009e; /* Color destacado */
+  border-radius: 2px;
+  transform: translateX(-50%) scaleX(1); /* Línea completamente visible */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}

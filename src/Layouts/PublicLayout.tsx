@@ -1,21 +1,19 @@
-import { Outlet } from "react-router-dom"
-import NavBar from "../components/Navbar/NavBar"
-import Hero from "../components/Hero/Hero"
-import './publicLayout.scss'
+import "./publicLayout.scss";
+
+import Hero from "../components/Hero/Hero";
+import NavBar from "../components/Navbar/NavBar";
+import { Outlet } from "react-router-dom";
 
 const PublicLayout = () => {
+  return (
+    <>
+      <div className="flex flex-col h-screen text-white bg-fixed bg-center bg-cover header bg-blend-overlay bg-black/80 div">
+        <NavBar />
+        <Hero />
+      </div>
+      <Outlet />
+    </>
+  );
+};
 
-
-
-    return (
-        <>
-            <div className=" flex flex-col h-screen header text-white bg-center bg-cover bg-blend-overlay bg-fixed bg-black/80 div">
-                <NavBar />
-                <Hero />
-            </div>
-            <Outlet />
-        </>
-    )
-}
-
-export default PublicLayout
+export default PublicLayout;
