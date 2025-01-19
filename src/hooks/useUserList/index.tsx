@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
+
 import { instance } from "../../services/base.api";
 
 export interface AppUser {
-    user_id: number;
-    firstname: string;
-    lastname: string;
-    password: string;
-    email: string;
-    role_id: number;
-    role_name: string;
-    role_description: RoleDescription;
-
+  user_id: number;
+  firstname: string;
+  lastname: string;
+  password: string;
+  email: string;
+  role_id: number;
+  role_name: string;
+  role_description: RoleDescription;
 }
 export interface RoleDescription {
-    String: string;
-    Valid: boolean;
+  String: string;
+  Valid: boolean;
 }
 
 // const addRole = (users: AppUser[] | null): AppUser[] | null => {
@@ -31,34 +31,36 @@ export interface RoleDescription {
 //     return null;
 // }
 
-
-
 const useAllUsers = () => {
-    const [allUsers, setAllUsers] = useState<AppUser[] | null>(null);
-    const [loadingUsers, setLoadingUsers] = useState<boolean>(false);
-    const [errorUsers, setErrorUsers] = useState<string | null>(null);
+  const [allUsers, setAllUsers] = useState<AppUser[] | null>(null);
+  const [loadingUsers, setLoadingUsers] = useState<boolean>(false);
+  const [errorUsers, setErrorUsers] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchUsers = async () => {
-            setLoadingUsers(true);
-            setErrorUsers(null);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      setLoadingUsers(true);
+      setErrorUsers(null);
 
-            try {
-                const response = await instance.get("users/");
-                const users = response.data
-                setAllUsers(users);
-            } catch (error: any) {
-                setErrorUsers(error.message as string || "An error occurred");
-                console.error("Error fetching users:", error);
-            } finally {
-                setLoadingUsers(false);
-            }
-        };
+      try {
+        const response = await instance.get("users/");
+        const users = response.data;
+        setAllUsers(users);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setErrorUsers(error.message || "An error occurred");
+        } else {
+          setErrorUsers("An error occurred");
+        }
+        console.error("Error fetching users:", error);
+      } finally {
+        setLoadingUsers(false);
+      }
+    };
 
-        fetchUsers();
-    }, []);
+    fetchUsers();
+  }, []);
 
-    return { allUsers, loadingUsers, errorUsers };
+  return { allUsers, loadingUsers, errorUsers };
 };
 
 export default useAllUsers;

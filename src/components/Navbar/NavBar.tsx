@@ -1,92 +1,90 @@
-import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle } from "@nextui-org/react";
-import React, { useContext } from "react";
-import { LoginContext } from "../../context/LoginContext";
+import "./Nabvar.scss";
 
-interface menuItem {
-    label: string,
-    link: string
-}
-const menuItems: menuItem[] = [
-    {
-        label: "Menu",
-        link: "/menu"
-    },
-    {
-        label: "Productos",
-        link: "/productos"
-    },
-    {
-        label: "Reserva",
-        link: "/reserva"
-    },
-    {
-        label: "Nosotros",
-        link: "/nosotros"
-    }
-]
-export default function NavBar() {
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+} from "@nextui-org/react";
+import React, { useMemo } from "react";
 
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const { isLogin } = useContext(LoginContext)
+import { Link } from "react-router-dom";
+import { Logo } from "../Logo/Logo";
 
+export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-    return (
-        <Navbar
-            classNames={{
-                item: [
-                    "flex",
-                    "relative",
-                    "h-full",
-                    "items-center",
-                    "data-[active=true]:after:content-['']",
-                    "data-[active=true]:after:absolute",
-                    "data-[active=true]:after:bottom-2",
-                    "data-[active=true]:after:left-0",
-                    "data-[active=true]:after:right-0",
-                    "data-[active=true]:after:h-[2px]",
-                    "data-[active=true]:after:rounded-[2px]",
-                    "data-[active=true]:after:bg-primary",
+  const menuItems = useMemo(
+    () => [
+      { label: "Menu", link: "/menu" },
+      { label: "Productos", link: "/productos" },
+      { label: "Reserva", link: "/reserva" },
+      { label: "Nosotros", link: "/nosotros" },
+    ],
+    [],
+  );
 
-                ],
-            }}
-            position="static" isBlurred={false} onMenuOpenChange={setIsMenuOpen}
-            className="bg-transparent shadow-none pt-2"
+  const middleIndex = useMemo(
+    () => Math.ceil(menuItems.length / 2),
+    [menuItems.length],
+  );
 
-        >
-            <NavbarContent>
-                <NavbarMenuToggle
-                    aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-                    className="sm:hidden"
-                />
-                <NavbarBrand>
-                    <p className="text-inherit text-xl font-FugazOne">Las Tlayudas</p>
-                </NavbarBrand>
-            </NavbarContent>
+  return (
+    <Navbar
+      className="justify-center bg-transparent shadow-none "
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      isBlurred={true}
+    >
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        />
+      </NavbarContent>
 
-            <NavbarContent className="hidden sm:flex gap-10" justify="center">
-                {menuItems.map((item, index) => (
-                    <NavbarItem key={`${item.label}-${index}`} isActive={item.link === window.location.pathname}>
-                        <Link className={"text-default text-2xl text-center"} href={item.link}>
-                            {item.label}
-                        </Link>
-                    </NavbarItem>
-                ))}
-            </NavbarContent>
+      <NavbarContent className="pr-3 sm:hidden" justify="center">
+        <NavbarBrand>
+          <Logo />
+          <p className="font-bold text-inherit">LALO</p>
+        </NavbarBrand>
+      </NavbarContent>
 
-            {!isLogin ? (
-                <NavbarContent justify="end" className="ml-3">
-                    <NavbarItem className="hidden lg:flex">
-                        <Link className="text-primary" href="login">
-                            Iniciar sesión
-                        </Link>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Button as={Link} color="primary" href="register" variant="solid">
-                            Registrarse
-                        </Button>
-                    </NavbarItem>
-                </NavbarContent>
-            ) : null}
-        </Navbar>
-    );
+      <NavbarContent className="hidden gap-8 sm:flex" justify="center">
+        {menuItems.map((item, index) => (
+          <React.Fragment key={index}>
+            {index === middleIndex && (
+              <NavbarBrand>
+                <p className="font-bold text-inherit">ACME</p>
+              </NavbarBrand>
+            )}
+            <NavbarItem
+              isActive={window.location.pathname === item.link}
+              className={`nav-item font-primary ${
+                window.location.pathname === item.link
+                  ? "navbar-active navbar-active-selected"
+                  : "navbar-Inactive"
+              }`}
+            >
+              <Link className="text-xl" to={item.link}>
+                {item.label}
+              </Link>
+            </NavbarItem>
+          </React.Fragment>
+        ))}
+      </NavbarContent>
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={index}>
+            <Link className="w-full" to={item.link}>
+              {item.label}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
+  );
 }

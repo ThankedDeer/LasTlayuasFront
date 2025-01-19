@@ -1,15 +1,15 @@
-import axios from "axios"
-const BASE_URL = 'http://localhost:8000/api/'
+import axios from "axios";
+const BASE_URL = "http://localhost:8000/api/";
 
 export const instance = axios.create({
-    baseURL: BASE_URL
-})
+  baseURL: BASE_URL,
+});
 
 axios.interceptors.request.use(
-    (config) => {
-    return config 
-},
-error => {
-    return Promise.reject(error)
-}
-)
+  (config) => {
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
