@@ -13,7 +13,7 @@ const LabelSectionName = ({
 }: LabelSectionNameProps) => {
   // Construir la cadena de clases condicionalmente
   const labelClass = `
-      font-Roboto font-bold
+      font-Roboto font-bold block
       ${fontSize}
       ${color}
       ${className}

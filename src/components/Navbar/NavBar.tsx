@@ -38,7 +38,7 @@ export default function App() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      isBlurred={false}
+      isBlurred={true}
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle
