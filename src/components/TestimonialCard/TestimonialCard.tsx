@@ -8,11 +8,11 @@ interface ITestimonialCardProps {
 
 const TestimonialCard = ({ testimonial, color }: ITestimonialCardProps) => {
   return (
-    <div className="relative border-solid border-large h-96 w-80 max-w-full max-h-full shadow-lg ">
+    <div className="relative max-w-full max-h-full border-solid shadow-lg border-large h-96 w-80 ">
       <div className="absolute right-6 -top-2">
         <Quotation color={color} />
       </div>
-      <p className="font-Roboto text-Lowgary text-center h-3/5 px-8 py-14 text-sm">
+      <p className="px-8 text-sm text-center font-Roboto text-Lowgary h-3/5 py-14">
         {testimonial.testimonial}
       </p>
       <div
@@ -20,16 +20,16 @@ const TestimonialCard = ({ testimonial, color }: ITestimonialCardProps) => {
         style={{ backgroundColor: color }}
       >
         <div
-          className="absolute top-0 transform -translate-y-1/2 p-1 rounded-full"
+          className="absolute top-0 p-1 transform -translate-y-1/2 rounded-full"
           style={{ backgroundColor: color }}
         >
           <img
             src={`https://api.dicebear.com/9.x/pixel-art/svg?seed=${testimonial.title}`}
             alt={testimonial.testimonial}
-            className="h-24 w-24 block rounded-full object-cover object-center"
+            className="block object-cover object-center w-24 h-24 rounded-full"
           />
         </div>
-        <h3 className="font-semibold text-lg text-white mt-14">
+        <h3 className="text-lg font-semibold text-white mt-14">
           {testimonial.title}
         </h3>
       </div>
