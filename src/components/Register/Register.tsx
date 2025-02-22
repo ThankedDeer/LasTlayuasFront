@@ -8,6 +8,7 @@ import {
   ModalFooter,
   ModalHeader,
 } from "@nextui-org/react";
+
 import React from "react";
 import { FaEyeSlash } from "react-icons/fa";
 import { TbEyeFilled } from "react-icons/tb";
@@ -27,19 +28,19 @@ export default function Register() {
           {(onClose) => (
             <>
               {loadingNewUser && <LoadingOverlay />}
-              <div className="px-3 py-6 col-span-2">
+              <div className="col-span-2 px-3 py-6">
                 <ModalHeader className="flex flex-col gap-1">
-                  <h2 className="font-FugazOne text-xl font-normal">
+                  <h2 className="text-xl font-normal font-FugazOne">
                     Las Tlayudas
                   </h2>
-                  <h3 className="font-Roboto font-bold">
+                  <h3 className="font-bold font-Roboto">
                     ¡Bienvenido! Regístrate ahora.
                   </h3>
-                  <p className="font-Roboto font-normal text-sm text-Lowgary">
+                  <p className="text-sm font-normal font-Roboto text-Lowgary">
                     Crea tu cuenta para descubrir nuestros deliciosos platillos.
                   </p>
                 </ModalHeader>
-                <ModalBody className="font-Roboto mt-3">
+                <ModalBody className="mt-3 font-Roboto">
                   <form
                     className="grid gap-1"
                     onSubmit={FormikRegister.handleSubmit}
@@ -104,9 +105,9 @@ export default function Register() {
                           aria-label="toggle password visibility"
                         >
                           {isVisible ? (
-                            <FaEyeSlash className="text-xl text-default-400 pointer-events-none" />
+                            <FaEyeSlash className="text-xl pointer-events-none text-default-400" />
                           ) : (
-                            <TbEyeFilled className="text-xl text-default-400 pointer-events-none" />
+                            <TbEyeFilled className="text-xl pointer-events-none text-default-400" />
                           )}
                         </button>
                       }
@@ -121,7 +122,7 @@ export default function Register() {
                       }
                       errorMessage={FormikRegister.errors.password}
                     />
-                    <div className="flex space-x-2 mt-4">
+                    <div className="flex mt-4 space-x-2">
                       <Button
                         color="primary"
                         radius="sm"
@@ -144,7 +145,7 @@ export default function Register() {
                   </form>
                 </ModalBody>
                 <ModalFooter className="flex flex-col items-start">
-                  <h3 className="block w-full  text-sm font-bold text-Lowgary">
+                  <h3 className="block w-full text-sm font-bold text-Lowgary">
                     ¿Ya tienes cuenta?
                     <Link className="ml-2" href="/login" size="sm">
                       Inicia sesión.
@@ -156,7 +157,7 @@ export default function Register() {
                 <img
                   src="/img/Las Tlayudas.png"
                   alt="Las tlayudas"
-                  className="h-full w-full"
+                  className="w-full h-full"
                 />
               </div>
             </>

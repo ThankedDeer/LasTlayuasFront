@@ -24,17 +24,17 @@ export default function App() {
       { label: "Reserva", link: "/reserva" },
       { label: "Nosotros", link: "/nosotros" },
     ],
-    [],
+    []
   );
 
   const middleIndex = useMemo(
     () => Math.ceil(menuItems.length / 2),
-    [menuItems.length],
+    [menuItems.length]
   );
 
   return (
     <Navbar
-      className="justify-center bg-transparent shadow-none "
+      className="absolute justify-center text-white bg-transparent shadow-none "
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}

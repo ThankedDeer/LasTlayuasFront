@@ -1,18 +1,17 @@
-// import { Swiper, SwiperSlide } from "swiper/react";
-
-// // Import Swiper styles
 // import "swiper/css";
 // import "swiper/css/controller";
 // import "swiper/css/effect-coverflow";
 // import "swiper/css/pagination";
 // import "swiper/css/zoom";
-
 // import "./Carousel.scss";
 
 // import { EffectCoverflow, Pagination, Zoom } from "swiper/modules";
-// import TestimonialCard, {
-//   ITestimonial,
-// } from "../TestimonialCard/TestimonialCard";
+// import { Swiper, SwiperSlide } from "swiper/react";
+
+// import { ITestimonial } from "@/hooks/useTestimonis/useGetTestimonial";
+// import { Colors } from "@/utils/colors";
+
+// // Import Swiper styles
 
 // const testimonials: ITestimonial[] = [
 //   {
@@ -67,14 +66,6 @@
 //   },
 // ];
 
-// const colors = [
-//   "#FF009E", // Vibrant Pink
-//   "#00BFA6", // Turquoise
-//   "#FFD700", // Corn Yellow
-//   "#228B22", // Deep Green
-//   "#FF5733", // Bright Orange
-//   "#8B008B", // Deep Purple
-// ];
 // const Carousel = () => {
 //   return (
 //     <Swiper
@@ -96,7 +87,7 @@
 //     >
 //       {testimonials.length > 0
 //         ? testimonials.map((test, index) => {
-//             const color = colors[index % colors.length]; // Selección cíclica del color
+//             const color = Colors[index % Colors.length]; // Selección cíclica del color
 //             return (
 //               <SwiperSlide key={`${test.name}-${index}-swiperSlide`}>
 //                 <TestimonialCard
